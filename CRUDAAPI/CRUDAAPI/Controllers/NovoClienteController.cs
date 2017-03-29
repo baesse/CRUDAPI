@@ -74,6 +74,16 @@ namespace CRUDAAPI.Controllers
 
         }
 
+        [HttpGet]
+        public string Seila(int nu)
+        {
+            string json = "igor c é bixao";
+
+            return json;
+
+        }
+
+
 
 
     }
