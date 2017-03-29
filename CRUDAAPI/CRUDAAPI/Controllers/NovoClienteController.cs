@@ -61,10 +61,20 @@ namespace CRUDAAPI.Controllers
             string json = clientecom.ToString();
 
             return json;
+            
+        }
 
 
+        [HttpGet]
+        public string Seila()
+        {
+            string json = "igor c é bixao";
 
+            return json;
 
         }
+
+
+
     }
 }
