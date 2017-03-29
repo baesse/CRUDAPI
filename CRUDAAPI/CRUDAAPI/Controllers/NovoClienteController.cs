@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -32,11 +33,7 @@ namespace CRUDAAPI.Controllers
 
         }
 
-        [HttpGet]
-        public string Get()
-        {
-            return "igor";
-        }
+       
 
 
         public string GetCliente(int cpf)
@@ -66,22 +63,27 @@ namespace CRUDAAPI.Controllers
 
 
         [HttpGet]
-        public string Seila()
+        public string GetListaClientes(int id)
         {
-            string json = "igor c é bixao";
+            Models.Cliente cliente = new Models.Cliente();
 
-            return json;
+            string jsongerado = "";
 
+            List<Models.Cliente> lista = new List<Models.Cliente>();
+            var json = JsonConvert.DeserializeObject<List<Models.Cliente>>(jsongerado);
+            json = new List<Models.Cliente>();
+
+           
+
+            json.Add(cliente.ListaCliente(id));
+            
+            var json_se = JsonConvert.SerializeObject(json);
+
+            return json_se.ToString();
         }
 
-        [HttpGet]
-        public string Seila(int nu)
-        {
-            string json = "igor c é bixao";
 
-            return json;
 
-        }
 
 
 

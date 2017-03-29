@@ -81,6 +81,28 @@ namespace CRUDAAPI.Models
 
             
         }
+        
+
+        public Cliente ListaCliente(int id)
+        {
+            MySqlConnection conexao = Models.Banco.GetConexao();
+            MySqlCommand Comando = Models.Banco.GetCommando(conexao);
+            Comando.CommandText = "select CPF,NOME,SOBRENOME,IDENTIDADE,TITULOELEITOR,NOMEMAE,NOMEPAI,ENDERECO,NUMERO from cad_usuario where cpf=@cpf";
+            Comando.Parameters.AddWithValue("@CPF", id);
+
+            MySqlDataReader reader = Banco.GetReader(Comando);
+
+
+            while (reader.Read())
+            {
+
+                Cliente cliente = new Cliente(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetString(8));
+                return cliente;
+
+            }
+            return null;
+
+        }
 
 
     }
